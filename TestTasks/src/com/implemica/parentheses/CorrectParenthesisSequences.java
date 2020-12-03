@@ -7,7 +7,7 @@ public class CorrectParenthesisSequences {
 	public static void main(String[] args) {
 		System.out.println(CorrectParenthesisSequences.countOfSequences());
 	}
-
+	//method use Catalan number formula
 	private static long countOfSequences() {
 		Scanner scanner = new Scanner(System.in);
 		int n = scanner.nextInt();
