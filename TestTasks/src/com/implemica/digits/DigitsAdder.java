@@ -17,8 +17,13 @@ public class DigitsAdder {
 
 	}
 
-	// for each step method recursively return the sum of last digits by dividing
-	// the number by 10, and truncates a number by dividing modulo 10
+	/**
+	 * For each step method recursively return the sum of last digits by dividing
+	 * the number by 10, and truncates a number by dividing modulo 10.
+	 * 
+	 * @param input store the factorial of 100.
+	 * @return the sum of digits of 100!.
+	 */
 	private static BigInteger sumOfDigits(BigInteger input) {
 
 		if (input != BigInteger.ZERO) {

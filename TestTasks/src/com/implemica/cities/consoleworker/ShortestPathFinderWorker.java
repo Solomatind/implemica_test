@@ -10,9 +10,13 @@ import com.implemica.cities.entity.Edge;
 import com.implemica.cities.entity.Vertex;
 import com.implemica.cities.pathfinder.ShortestPath;
 
+/**
+ * Class that works with console.
+ */
 public class ShortestPathFinderWorker {
 
 	private Scanner scanner;
+	/** The field which store the object of algorithm. */
 	private ShortestPath shortestPath;
 
 	public ShortestPathFinderWorker() {
@@ -21,6 +25,9 @@ public class ShortestPathFinderWorker {
 
 	}
 
+	/**
+	 * The method for starting to work with console.
+	 */
 	public void start() {
 		int countOfTests;
 		System.out.print("the number of tests:(<= 10) ");
@@ -31,6 +38,10 @@ public class ShortestPathFinderWorker {
 		}
 	}
 
+	/**
+	 * The method gets input parameters of source and destination cities from input
+	 * stream. Set parameters to paths array.
+	 */
 	private void getPaths() {
 		int countOfPaths;
 		System.out.print("the number of paths to find:(<= 100) ");
@@ -46,14 +57,24 @@ public class ShortestPathFinderWorker {
 		printShortestPathsLength(paths);
 	}
 
+	/**
+	 * The method prints the result of the calculating shortest paths.
+	 * 
+	 * @param paths the array which store the paths to be calculated.
+	 */
 	private void printShortestPathsLength(String[] paths) {
 		for (String path : paths) {
 			String[] sourceDest = path.split(" ");
 			shortestPath.computeShortestPaths(sourceDest[0]);
-			System.out.println("the minimum transportation cost is " + shortestPath.getShortestLengthPathTo(sourceDest[1]));
+			System.out.println(
+					"the minimum transportation cost is " + shortestPath.getShortestLengthPathTo(sourceDest[1]));
 		}
 	}
 
+	/**
+	 * The method gets names of cities from input stream and sets them to the map
+	 * object.
+	 */
 	private void setCities() {
 		int countOfCities;
 		System.out.print("the number of cities:(<= 10000) ");
@@ -69,6 +90,12 @@ public class ShortestPathFinderWorker {
 		setCitiesNamesToVertexes(cities, edges);
 	}
 
+	/**
+	 * The method makes vertex list from an object of cities.
+	 * 
+	 * @param cities store all cities.
+	 * @param edges  store edges with weights of each city.
+	 */
 	private void setCitiesNamesToVertexes(Map<Integer, String> cities, String[][] edges) {
 		List<Vertex> vertexes = new ArrayList<>();
 		for (int i = 0; i < cities.size(); i++) {
@@ -77,6 +104,13 @@ public class ShortestPathFinderWorker {
 		setEdges(vertexes, edges);
 	}
 
+	/**
+	 * The method set edges to the list of vertexes and set them to the field of
+	 * shortestPath.
+	 * 
+	 * @param vertexes store the list of all vertexes.
+	 * @param edges    store the matrix of edges with weights of each vertexes.
+	 */
 	private void setEdges(List<Vertex> vertexes, String[][] edges) {
 		for (int i = 0; i < edges.length; i++) {
 			for (int j = 0; j < edges[i].length; j++) {
@@ -88,6 +122,12 @@ public class ShortestPathFinderWorker {
 		shortestPath.setVertexes(vertexes);
 	}
 
+	/**
+	 * The method gets neighbour's indexes and their weights from input stream and
+	 * sets them to the array of edges.
+	 * 
+	 * @return the array of edges with weights.
+	 */
 	private String[] getEdges() {
 		int countOfEdges;
 		System.out.print("the number of neighbors of city: ");
@@ -103,6 +143,9 @@ public class ShortestPathFinderWorker {
 		return edges;
 	}
 
+	/**
+	 * The method closes the input stream.
+	 */
 	public void stop() {
 		scanner.close();
 	}

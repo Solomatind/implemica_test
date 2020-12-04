@@ -7,7 +7,13 @@ public class CorrectParenthesisSequences {
 	public static void main(String[] args) {
 		System.out.println(CorrectParenthesisSequences.countOfSequences());
 	}
-	//method use Catalan number formula
+
+	/**
+	 * The method use the Catalan number formula for calculating number of
+	 * sequences.
+	 * 
+	 * @return the number of sequences of n parenthesis.
+	 */
 	private static long countOfSequences() {
 		Scanner scanner = new Scanner(System.in);
 		int n = scanner.nextInt();

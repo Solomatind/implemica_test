@@ -9,7 +9,14 @@ public class ShortestPath {
 
 	private List<Vertex> cities;
 
+	/**
+	 * The method calculate all the shortest paths from source to target. The method
+	 * is based on Dijkstra's algorithm
+	 * 
+	 * @param sourceName the variable which is the source name of vertex
+	 */
 	public void computeShortestPaths(String sourceName) {
+		//It's necessary for the algorithm to work correctly if you need to calculate several paths.
 		clearVertexes();
 		Vertex sourceVertex = null;
 		for (Vertex city : cities) {
@@ -39,6 +46,12 @@ public class ShortestPath {
 		}
 	}
 
+	/**
+	 * The method returns distance to target vertex.
+	 * 
+	 * @param targetName the variable which is the source name of vertex.
+	 * @return the distance from source vertex to target vertex.
+	 */
 	public int getShortestLengthPathTo(String targetName) {
 		Vertex targetVertex = null;
 		for (Vertex city : cities) {
@@ -49,7 +62,10 @@ public class ShortestPath {
 		return targetVertex.getDistance();
 
 	}
-
+	
+	/**
+	 * The method sets fields of vertexes to the default values.
+	 */
 	private void clearVertexes() {
 		cities.forEach((Vertex vertex) -> {
 			vertex.setVisited(false);
